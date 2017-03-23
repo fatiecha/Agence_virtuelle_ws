@@ -13,11 +13,12 @@ import com.mysql.jdbc.Connection;
 
 public class AjouterReclamationWS {
 
-	public String ajouterReclamation(long code_contrat,String origine ,String  type_reclamation,String comm) throws Exception{
+	public String ajouterReclamation(String codec,String origine ,String  type_reclamation,String comm) throws Exception{
 		String msg;
 		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
 		try{
+			Long code_contrat=Long.parseLong(codec);
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection connection =(Connection) DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/agence1","root", "");

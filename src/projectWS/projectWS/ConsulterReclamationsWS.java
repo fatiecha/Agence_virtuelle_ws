@@ -12,9 +12,9 @@ import bean.Devis;
 import bean.Reclamation;
 
 public class ConsulterReclamationsWS {
-	public  ArrayList<Reclamation> consulterReclamation(Long id_contrat) {
+	public  ArrayList<Reclamation> consulterReclamation(String id) {
 		ArrayList<Reclamation> listReclamation = new ArrayList<Reclamation>();
-		try {
+		try {Long id_contrat = Long.parseLong(id);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",

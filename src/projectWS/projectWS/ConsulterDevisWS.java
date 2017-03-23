@@ -10,10 +10,10 @@ import com.mysql.jdbc.Connection;
 import bean.Devis;
 
 public class ConsulterDevisWS {
-	public  ArrayList<Devis> consulterDevis(Long id_contrat) {
+	public  ArrayList<Devis> consulterDevis(String id) {
 		ArrayList<Devis> listDevis = new ArrayList<Devis>();
 		try {
-
+			Long id_contrat = Long.parseLong(id);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 					"root", "");

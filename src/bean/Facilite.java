@@ -31,5 +31,9 @@ public class Facilite {
 		this.etat = etat;
 		this.montant = montant;
 	}
+	public String getEtat() {
+		return etat;
+	}
+	
 	
 }

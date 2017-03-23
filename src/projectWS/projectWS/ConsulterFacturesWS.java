@@ -12,9 +12,9 @@ import bean.Facture;
 import bean.Reclamation;
 
 public class ConsulterFacturesWS {
-	public  List<Facture> consulterFacture(Long id_contrat) {
+	public  List<Facture> consulterFacture(String id) {
 		List<Facture> listFacture = new ArrayList<Facture>();
-		try {
+		try {Long id_contrat = Long.parseLong(id);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",

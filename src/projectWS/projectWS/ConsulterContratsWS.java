@@ -11,10 +11,10 @@ import com.mysql.jdbc.Connection;
 import bean.Contrat;
 
 public class ConsulterContratsWS {
-	public List<Contrat> consulterContrats(Long id_client) {
+	public List<Contrat> consulterContrats(String id) {
 		List<Contrat> listContrats = new ArrayList<Contrat>();
 		try {
-
+			Long id_client = Long.parseLong(id);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 					"root", "");

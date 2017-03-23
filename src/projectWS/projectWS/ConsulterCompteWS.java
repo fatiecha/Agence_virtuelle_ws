@@ -12,10 +12,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ConsulterCompteWS {
-	public Compte consulterCompte(Long id_contrat) {
+	public Compte consulterCompte(String id) {
 	Compte compte=new Compte();
 		try {
-			
+			Long id_contrat=Long.parseLong(id);
+
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",

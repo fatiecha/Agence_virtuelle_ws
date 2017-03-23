@@ -14,9 +14,9 @@ import bean.Facilite;
 import bean.Facture;
 
 public class ConsulterFacilitesWS {
-	public  List<Facilite> consulterFacilite(Long id_contrat) {
+	public  List<Facilite> consulterFacilite(String id) {
 		List<Facilite> listFacilite = new ArrayList<Facilite>();
-		try {
+		try {Long id_contrat = Long.parseLong(id);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
@@ -44,10 +44,10 @@ public class ConsulterFacilitesWS {
 		return listFacilite;
 	}
 	
-	public  List<Echeance> consulterEcheance(Long id_facilite) {
+	public  List<Echeance> consulterEcheance(String id) {
 		List<Echeance> listEcheance = new ArrayList<Echeance>();
 		try {
-
+			Long id_facilite = Long.parseLong(id);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 					"root", "");
