@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://projectWS.projectWS" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://projectWS.projectWS" xmlns:intf="http://projectWS.projectWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://projectWS.projectWS" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="ajouterReclamation">
+    <complexType>
+     <sequence>
+      <element name="codec" type="xsd:string"/>
+      <element name="origine" type="xsd:string"/>
+      <element name="type_reclamation" type="xsd:string"/>
+      <element name="comm" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterReclamationResponse">
+    <complexType>
+     <sequence>
+      <element name="ajouterReclamationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getIdType_reclamation">
+    <complexType>
+     <sequence>
+      <element name="libelle" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getIdType_reclamationResponse">
+    <complexType>
+     <sequence>
+      <element name="getIdType_reclamationReturn" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="ajouterReclamationResponse">
+
+      <wsdl:part element="impl:ajouterReclamationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterReclamationRequest">
+
+      <wsdl:part element="impl:ajouterReclamation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getIdType_reclamationRequest">
+
+      <wsdl:part element="impl:getIdType_reclamation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getIdType_reclamationResponse">
+
+      <wsdl:part element="impl:getIdType_reclamationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AjouterReclamationWS">
+
+      <wsdl:operation name="ajouterReclamation">
+
+         <wsdl:input message="impl:ajouterReclamationRequest" name="ajouterReclamationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajouterReclamationResponse" name="ajouterReclamationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getIdType_reclamation">
+
+         <wsdl:input message="impl:getIdType_reclamationRequest" name="getIdType_reclamationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getIdType_reclamationResponse" name="getIdType_reclamationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AjouterReclamationWSSoapBinding" type="impl:AjouterReclamationWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="ajouterReclamation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajouterReclamationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajouterReclamationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getIdType_reclamation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getIdType_reclamationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getIdType_reclamationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AjouterReclamationWSService">
+
+      <wsdl:port binding="impl:AjouterReclamationWSSoapBinding" name="AjouterReclamationWS">
+
+         <wsdlsoap:address location="http://localhost:8082/Agence_virtuelle_ws/services/AjouterReclamationWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

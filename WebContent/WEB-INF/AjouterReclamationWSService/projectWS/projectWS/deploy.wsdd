@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AjouterReclamationWSService WSDL service -->
+
+  <service name="AjouterReclamationWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://projectWS.projectWS"/>
+      <parameter name="wsdlServiceElement" value="AjouterReclamationWSService"/>
+      <parameter name="schemaQualified" value="http://projectWS.projectWS"/>
+      <parameter name="wsdlServicePort" value="AjouterReclamationWS"/>
+      <parameter name="className" value="projectWS.projectWS.AjouterReclamationWS"/>
+      <parameter name="wsdlPortType" value="AjouterReclamationWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://projectWS.projectWS" xmlns:retNS="http://projectWS.projectWS" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="ajouterReclamation" qname="operNS:ajouterReclamation" returnQName="retNS:ajouterReclamationReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://projectWS.projectWS" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:codec" type="tns:string"/>
+        <parameter xmlns:pns="http://projectWS.projectWS" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:origine" type="tns:string"/>
+        <parameter xmlns:pns="http://projectWS.projectWS" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:type_reclamation" type="tns:string"/>
+        <parameter xmlns:pns="http://projectWS.projectWS" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:comm" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://projectWS.projectWS" xmlns:retNS="http://projectWS.projectWS" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getIdType_reclamation" qname="operNS:getIdType_reclamation" returnQName="retNS:getIdType_reclamationReturn" returnType="rtns:long" soapAction="">
+        <parameter xmlns:pns="http://projectWS.projectWS" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:libelle" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="ajouterReclamation getIdType_reclamation"/>
+
+  </service>
+</deployment>
