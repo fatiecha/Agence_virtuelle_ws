@@ -37,20 +37,23 @@ public class ConsulterContratsWS {
 
 	}
 
-	public Contrat detailContrat(Long id_contrat) {
+	public Contrat detailContrat(String id_cta_st) {
 		Contrat contrat = new Contrat();
 		try {
+			Long id_cta_long = Long.parseLong(id_cta_st);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 					"root", "");
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from contrat where id=" + id_contrat);
+			ResultSet rs = statement.executeQuery("select * from contrat where id=" + id_cta_long);
 			Statement statement2 = connection.createStatement();
 			ResultSet rs2 = statement2.executeQuery(
 					"select * from demande_abonnement d , contrat c where c.demande_abonnement_id=d.id and c.id="
-							+ id_contrat);
+							+ id_cta_long);
+			
 			while (rs.next()) {
+				System.out.println("test rs "+rs.getDate("datePoseCompteur"));
 				contrat.setDatePoseCompteur(rs.getDate("datePoseCompteur"));
 				contrat.setNumCompteur(rs.getString("numCompteur"));
 
@@ -61,7 +64,7 @@ public class ConsulterContratsWS {
 
 			}
 			while (rs2.next()) {
-
+				System.out.println("test rs2 "+rs2.getString("tournee"));
 				contrat.setTournee(rs2.getString("tournee"));
 				contrat.setTarif(rs2.getString("tarif"));
 			}

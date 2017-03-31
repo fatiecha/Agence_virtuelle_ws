@@ -31,7 +31,7 @@ public class ConsulterFacturesWS {
 				facture.setPeriode(rs.getString("periode"));
 				facture.setSolde(rs.getDouble("solde"));
 				facture.setType_facture(getLibelleType_facture(rs.getLong("code_type_facture")));
-				
+				facture.setEtat(rs.getBoolean("etat"));
 
 
 				listFacture.add(facture);
