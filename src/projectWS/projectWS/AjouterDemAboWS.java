@@ -11,11 +11,11 @@ import com.mysql.jdbc.Connection;
 
 public class AjouterDemAboWS {
 	public String ajouterDem_Abo(String tournee, String code_client, String service, String tarif) throws Exception {
-
+int a;
 		String msg;
 		AjouterReclamationWS c = new AjouterReclamationWS();
 		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-
+	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
@@ -115,5 +115,25 @@ public class AjouterDemAboWS {
 
 		}
 		return strLong;
+	}
+	public  int verifierTournee(String tournee,String service) {
+		int a=0;
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
+					"root", "");
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select tournee  from demande_abonnement and contrat where tournee=" + tournee +"and service in (select service from contrat c  where c.demande_abonnement_id=d.id  ");
+			while (rs.next()) {
+				a=1;//tournee existant donc  echec
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return a;
 	}
 }
