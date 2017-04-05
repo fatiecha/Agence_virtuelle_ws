@@ -24,6 +24,7 @@ public class ConsulterContratsWS {
 				Contrat contrat = new Contrat();
 				contrat.setId(rs.getLong("id"));
 				contrat.setIdClient(id_client);
+				contrat.setNumero(rs.getString("numero"));
 				contrat.setService(rs.getString("service"));
 				contrat.setNomClient(getNomClient(id_client));
 				

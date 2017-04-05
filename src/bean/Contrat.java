@@ -6,6 +6,7 @@ import java.util.List;
 public class Contrat {
 	private Long id;
 	private Date date;
+	private String numero;
 	private String service;
 	private String CIN;
 	private String agence;
@@ -99,6 +100,18 @@ public class Contrat {
 
 	public void setAgence(String agence) {
 		this.agence = agence;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public void setIdClient(Long idClient) {
+		this.idClient = idClient;
 	}
 
 	public String getBranchement() {
