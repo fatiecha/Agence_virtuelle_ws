@@ -12,7 +12,7 @@ import com.mysql.jdbc.Connection;
 public class AjouterDemAboWS {
 	public String ajouterDem_Abo(String tournee, String code_client, String service, String tarif) throws Exception {
 int a;
-		String msg;
+		String msg="non";
 		AjouterReclamationWS c = new AjouterReclamationWS();
 		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 	
@@ -20,14 +20,15 @@ int a;
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 					"root", "");
-
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT c.id FROM contrat c, demande_abonnement d WHERE d.tournee = "+tournee +" AND c.demande_abonnement_id = d.id AND c.service = '"+ service +"'");
 			String etat = "En attente";
-			System.out.println("teeeeeest");
 			Long lcode_client = Long.parseLong(code_client);
-			System.out.println("cd cli " + lcode_client);
 			Long ltournee = Long.parseLong(tournee);
-			System.out.println(ltournee + " tourne ");
-
+			boolean empty=true;
+			while (rs.next()) {
+				empty=false;}
+			if(empty){
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"INSERT INTO demande_abonnement ( tournee, date,code_client,tarif) VALUES (?,?,?,?)");
 			preparedStatement.setLong(1, ltournee);
@@ -46,7 +47,7 @@ int a;
 			preparedStatement2.setString(5, etat);
 			preparedStatement2.executeUpdate();
 			c.ajouterReclamation(getIdMaxContrat(), "reclamation client", "verification demande contrat", "");
-			msg = "oui";
+			msg = "oui";}
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg = "non";
@@ -116,17 +117,19 @@ int a;
 		}
 		return strLong;
 	}
-	public  int verifierTournee(String tournee,String service) {
-		int a=0;
+
+	public int verifierTournee(String tournee, String service) {
+		int a = 0;
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 					"root", "");
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select tournee  from demande_abonnement and contrat where tournee=" + tournee +"and service in (select service from contrat c  where c.demande_abonnement_id=d.id  ");
+			ResultSet rs = statement.executeQuery("select tournee  from demande_abonnement and contrat where tournee="
+					+ tournee + "and service in (select service from contrat c  where c.demande_abonnement_id=d.id  ");
 			while (rs.next()) {
-				a=1;//tournee existant donc  echec
+				a = 1;// tournee existant donc echec
 
 			}
 		} catch (Exception e) {

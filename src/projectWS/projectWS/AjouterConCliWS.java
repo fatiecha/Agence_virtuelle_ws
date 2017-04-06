@@ -8,7 +8,7 @@ import java.sql.Statement;
 import com.mysql.jdbc.Connection;
 
 public class AjouterConCliWS {
-	public String addContratClient(String id1, String id2) throws Exception {
+	public String addContratClient(String id1, String id2,String service) throws Exception {
 		String msg, cin = null, cin2 = null;
 		try {
 			Long id_contrat = Long.parseLong(id1);
@@ -19,7 +19,7 @@ public class AjouterConCliWS {
 
 			Statement statement = connection.createStatement();
 
-			ResultSet rs = statement.executeQuery("select CIN from contrat where id=" + id_contrat);
+			ResultSet rs = statement.executeQuery("select CIN from contrat where id=" + id_contrat +" and service ='" + service +"'");
 			while (rs.next()) {
 				cin = rs.getString("CIN");
 			}
