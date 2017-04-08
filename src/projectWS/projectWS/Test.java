@@ -14,19 +14,19 @@ import bean.Reclamation;
 
 public class Test {
 	public static void main(String[] args) throws Exception {
-//		List<Reclamation> l = new ArrayList<Reclamation>();
-//ConsulterReclamationsWS c=new ConsulterReclamationsWS();
-//		l = c.consulterReclamation("1");
-//		System.out.println(l);
-//		for (int i = 0; i < l.size(); i++) {
-//			Reclamation d = l.get(i);
-//			System.out.println(d.getCommentaire());
-//		}
-		String s=null;
-AjouterDemAboWS c=new   AjouterDemAboWS();
-s=c.ajouterDem_Abo("11455451", "1", "eyyau", "torof");
-System.out.println(s);
-	}
+		List<Reclamation> l = new ArrayList<Reclamation>();
+ConsulterReclamationsWS c=new ConsulterReclamationsWS();
+		l = c.consulterReclamation("1");
+		System.out.println(l);
+		for (int i = 0; i < l.size(); i++) {
+			Reclamation d = l.get(i);
+			System.out.println(d.getId());
+		}
+//		String s=null;
+//AjouterDemAboWS c=new   AjouterDemAboWS();
+//s=c.ajouterDem_Abo("11455451", "1", "eyyau", "torof");
+//System.out.println(s);
+//	}
 	/*public static void main(String[] args) throws Exception {
 	AjouterReclamationWS c=new AjouterReclamationWS();
 	String msg=c.ajouterReclamation(1l, "origine", "type1", "comm1");
@@ -41,4 +41,5 @@ System.out.println(s);
 		l=f.consulterFacture("1");
 		
 	}*/
+}
 }
