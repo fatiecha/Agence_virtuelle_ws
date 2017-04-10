@@ -8,10 +8,11 @@ import java.sql.Statement;
 import com.mysql.jdbc.Connection;
 
 public class AjouterConCliWS {
-	public String addContratClient(String id1, String id2,String service) throws Exception {
+	public String addContratClient(String numero, String id2,String service) throws Exception {
 		String msg, cin = null, cin2 = null;
+		Long id_contrat = null ;
+
 		try {
-			Long id_contrat = Long.parseLong(id1);
 			Long id_client = Long.parseLong(id2);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
@@ -19,7 +20,7 @@ public class AjouterConCliWS {
 
 			Statement statement = connection.createStatement();
 
-			ResultSet rs = statement.executeQuery("select CIN from contrat where id=" + id_contrat +" and service ='" + service +"'");
+			ResultSet rs = statement.executeQuery("select CIN,id from contrat where numero=" + numero +" and service ='" + service +"'");
 			while (rs.next()) {
 				cin = rs.getString("CIN");
 			}
@@ -34,16 +35,18 @@ public class AjouterConCliWS {
 			}
 
 			if (cin.equals(cin2)) {
+				
 				Connection connection3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
 						"root", "");
 				PreparedStatement preparedStatement = connection3
 						.prepareStatement("INSERT INTO con_cli (CODE_CON, CODE_CLI) VALUES (?,?)");
-				preparedStatement.setLong(1, id_contrat);
+				preparedStatement.setLong(1,rs.getLong("id"));
 				preparedStatement.setLong(2, id_client);
 
 				preparedStatement.executeUpdate();
 
 				msg = "oui";
+
 			} else {
 				msg = "non";
 			}

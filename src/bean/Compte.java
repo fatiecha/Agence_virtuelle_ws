@@ -12,6 +12,13 @@ public class Compte {
 	private double credit;
 	private double provision;
 	private Contrat contrat;
+	public long contrat_id;
+	public long getContrat_id() {
+		return contrat_id;
+	}
+	public void setContrat_id(long contrat_id) {
+		this.contrat_id = contrat_id;
+	}
 	public Long getId() {
 		return Id;
 	}

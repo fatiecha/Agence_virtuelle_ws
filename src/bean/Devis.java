@@ -12,7 +12,7 @@ public class Devis implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private Date date;
-	private boolean etat;
+	private String etat;
 	private double montant;
 	private String commentaire;
 	private Long contrat;
@@ -28,25 +28,28 @@ public class Devis implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public boolean isEtat() {
-		return etat;
-	}
-	public void setEtat(boolean etat) {
-		this.etat = etat;
-	}
+	
 	public double getMontant() {
 		return montant;
 	}
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
-	public Devis(Date date, boolean etat, double montant, String commentaire, Long contrat) {
+	
+
+	public Devis(Date date, String etat, double montant, String commentaire, Long contrat) {
 		super();
 		this.date = date;
 		this.etat = etat;
 		this.montant = montant;
 		this.commentaire = commentaire;
 		this.contrat = contrat;
+	}
+	public String getEtat() {
+		return etat;
+	}
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 	public Devis() {
 		super();

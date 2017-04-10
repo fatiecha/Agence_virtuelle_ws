@@ -34,7 +34,8 @@ public class ConsulterCompteWS {
 				compte.setMt_exigible(rs.getLong("mt_exigible"));
 				compte.setMt_impayé(rs.getLong("mt_impayé"));
 				compte.setProvision(rs.getLong("provision"));
-				
+				compte.setContrat_id(rs.getLong("contrat_id"));
+
 				}
 			
 		} catch (Exception e) {
@@ -45,5 +46,14 @@ public class ConsulterCompteWS {
 		return compte;
 
 	}
-	
+	public static void main(String[] args) {
+		ConsulterCompteWS c=new ConsulterCompteWS();
+		Compte a=new Compte();
+		a=c.consulterCompte("1");
+		System.out.println(a.getCredit());
+		System.out.println(a.getMt_exigible());
+		System.out.println(a.getMt_impayé());
+		System.out.println(a.getProvision());
+		System.out.println(a.getContrat_id());
+	}
 }

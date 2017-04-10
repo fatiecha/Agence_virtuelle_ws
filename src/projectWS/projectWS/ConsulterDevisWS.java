@@ -25,7 +25,7 @@ public class ConsulterDevisWS {
 				devis.setId(rs.getLong("id"));
 				devis.setCommentaire(rs.getString("commentaire"));
 				devis.setDate(rs.getDate("date"));
-				devis.setEtat(rs.getBoolean("etat"));
+				devis.setEtat(rs.getString("etat"));
 				devis.setMontant(rs.getDouble("montant"));
 				devis.setContrat(rs.getLong("code_contrat"));
 
