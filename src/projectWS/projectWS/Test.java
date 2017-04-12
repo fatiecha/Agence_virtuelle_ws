@@ -14,35 +14,26 @@ import bean.Reclamation;
 
 public class Test {
 	public static void main(String[] args) throws Exception {
-		AjouterConCliWS c=new AjouterConCliWS();
-		String msg=c.addContratClient("1313", "2", "Basse tension");
-		System.out.println(msg);
-//		List<Reclamation> l = new ArrayList<Reclamation>();
-//ConsulterReclamationsWS c=new ConsulterReclamationsWS();
-//		l = c.consulterReclamation("1");
-//		System.out.println(l);
-//		for (int i = 0; i < l.size(); i++) {
-//			Reclamation d = l.get(i);
-//			System.out.println(d.getId());
-//		}
-//		String s=null;
-//AjouterDemAboWS c=new   AjouterDemAboWS();
-//s=c.ajouterDem_Abo("11455451", "1", "eyyau", "torof");
-//System.out.println(s);
-//	}
-	/*public static void main(String[] args) throws Exception {
-	AjouterReclamationWS c=new AjouterReclamationWS();
-	String msg=c.ajouterReclamation(1l, "origine", "type1", "comm1");
-	System.out.println(msg);
-	
-
-	}*/
-	
-	/*public static void main(String[] args) throws Exception {
-		ConsulterFacturesWS f=new ConsulterFacturesWS();
-		List<Facture> l = new ArrayList<Facture>();		
-		l=f.consulterFacture("1");
+//		AjouterConCliWS c=new AjouterConCliWS();
+//		List<Contrat> contrats=new ArrayList<Contrat>();
+//contrats=c.getCinIdContrat("784ddf89", "eau");
+//if(contrats.isEmpty()){
+//	System.out.println("empty");
+//}
+//else{
+//for(int i=0;i<contrats.size();i++){
+//Contrat t=contrats.get(i);
+//System.out.println(t.getCIN()+" "+t.getId());
+//String msg=c.getCinClient("12");
+//System.out.println(msg);
 		
-	}*/
+//		boolean a=c.checkConcli("2", "1");
+//		System.out.println(a);
+//		String msg=c.addContratClient("333", "1", "eau");
+//		System.out.println(msg);
+		AjouterDemAboWS c=new AjouterDemAboWS();
+		String msg=c.ajouterDem_Abo("1555", "1", "eau", "tar");
+		System.out.println(msg);
 }
+
 }

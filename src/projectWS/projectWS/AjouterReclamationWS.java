@@ -24,13 +24,14 @@ public class AjouterReclamationWS {
 				.getConnection("jdbc:mysql://localhost:3306/agence1","root", "");
 		
 		String etat="en cours";
-		PreparedStatement preparedStatement = connection.prepareStatement( "INSERT INTO reclamation (date, origine, etat, commentaire,code_type_reclamation,code_contrat) VALUES (?,?,?,?,?,?)");
+		PreparedStatement preparedStatement = connection.prepareStatement( "INSERT INTO reclamation (date, origine, etat, commentaire,code_type_reclamation,code_contrat,commentaireResolution) VALUES (?,?,?,?,?,?,?)");
 		preparedStatement.setDate(1, date);
 		preparedStatement.setString(2, origine);
 		preparedStatement.setString(3,etat);
 		preparedStatement.setString(4,comm);
 		preparedStatement.setLong(5, getIdType_reclamation(type_reclamation));
 		preparedStatement.setLong(6,code_contrat);
+		preparedStatement.setString(7,"---");
 
 		preparedStatement.executeUpdate();
 		msg="oui";

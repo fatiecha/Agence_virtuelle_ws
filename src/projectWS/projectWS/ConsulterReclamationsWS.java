@@ -30,7 +30,6 @@ public class ConsulterReclamationsWS {
 				reclamation.setEtat(rs.getString("etat"));
 				reclamation.setOrigine(rs.getString("origine"));
 				reclamation.setCommentaireResolution(rs.getString("commentaireResolution"));
-				reclamation.setDateResolution(rs.getDate("dateResolution"));
 				reclamation.setType_reclamation(getLibelleType_reclamation(rs.getLong("code_type_reclamation")));
 				reclamation.setContrat(rs.getLong("code_contrat"));
 
