@@ -38,13 +38,14 @@ int a;
 
 			preparedStatement.executeUpdate();
 			PreparedStatement preparedStatement2 = connection.prepareStatement(
-					"INSERT INTO contrat ( cin, date,service,	demande_abonnement_id,etat) VALUES (?,?,?,?,?)");
+					"INSERT INTO contrat ( cin, date,datePoseCompteur,service,demande_abonnement_id,etat) VALUES (?,?,?,?,?,?)");
 			preparedStatement2.setString(1, getCinClient(lcode_client));
 			preparedStatement2.setDate(2, date);
-			preparedStatement2.setString(3, service);
-			preparedStatement2.setString(4, getIdMax());
+			preparedStatement2.setDate(3, date);
+			preparedStatement2.setString(4, service);
+			preparedStatement2.setString(5, getIdMax());
 
-			preparedStatement2.setString(5, etat);
+			preparedStatement2.setString(6, etat);
 			preparedStatement2.executeUpdate();
 			c.ajouterReclamation(getIdMaxContrat(), "reclamation client", "verification demande contrat", "");
 			msg = "oui";}
