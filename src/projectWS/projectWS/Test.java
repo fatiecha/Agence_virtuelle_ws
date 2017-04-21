@@ -42,14 +42,19 @@ public class Test {
 //			System.out.println(e.getId());
 //		}
 		
-		ConsulterCompteWS c=new ConsulterCompteWS();
-		Compte d=new Compte();
-		d=c.consulterCompte("12");
-		System.out.println(d.getCredit());
-		System.out.println(d.getProvision());
-		System.out.println(d.getMt_impayé());
-		System.out.println(d.getMt_exigible());
-
+//		ConsulterCompteWS c=new ConsulterCompteWS();
+//		Compte d=new Compte();
+//		d=c.consulterCompte("12");
+//		System.out.println(d.getCredit());
+//		System.out.println(d.getProvision());
+//		System.out.println(d.getMt_impayé());
+//		System.out.println(d.getMt_exigible());
+		AjouterClientWS c=new AjouterClientWS();
+		String a=c.add("ps", "ps","ps","ech", "ps", "p78898");
+		
+//		String a=c.verifierEmail("qpppp");
+//		
+		System.out.println(a);
 }
 
 }
