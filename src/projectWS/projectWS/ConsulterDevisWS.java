@@ -10,7 +10,7 @@ import com.mysql.jdbc.Connection;
 import bean.Devis;
 
 public class ConsulterDevisWS {
-	public  ArrayList<Devis> consulterDevis(String id) {
+	public ArrayList<Devis> consulterDevis(String id) {
 		ArrayList<Devis> listDevis = new ArrayList<Devis>();
 		try {
 			Long id_contrat = Long.parseLong(id);
@@ -29,10 +29,10 @@ public class ConsulterDevisWS {
 				devis.setMontant(rs.getDouble("montant"));
 				devis.setContrat(rs.getLong("code_contrat"));
 
-
 				listDevis.add(devis);
 
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -40,5 +40,5 @@ public class ConsulterDevisWS {
 
 		return listDevis;
 	}
-	
+
 }

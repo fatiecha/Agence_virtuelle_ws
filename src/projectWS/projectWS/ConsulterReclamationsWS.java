@@ -12,9 +12,10 @@ import bean.Devis;
 import bean.Reclamation;
 
 public class ConsulterReclamationsWS {
-	public  ArrayList<Reclamation> consulterReclamation(String id) {
+	public ArrayList<Reclamation> consulterReclamation(String id) {
 		ArrayList<Reclamation> listReclamation = new ArrayList<Reclamation>();
-		try {Long id_contrat = Long.parseLong(id);
+		try {
+			Long id_contrat = Long.parseLong(id);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
@@ -36,6 +37,7 @@ public class ConsulterReclamationsWS {
 				listReclamation.add(reclamation);
 
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -44,23 +46,23 @@ public class ConsulterReclamationsWS {
 		return listReclamation;
 	}
 
-
-	public String getLibelleType_reclamation(Long id){
-		String libelle=null;
+	public String getLibelleType_reclamation(Long id) {
+		String libelle = null;
 		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
-				"root", "");
-		Statement statement = connection.createStatement();
-		ResultSet rs = statement.executeQuery("select libelle from type_reclamation where id=" + id);
-		while(rs.next()){
-		libelle=rs.getString("libelle");
-		}
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
+					"root", "");
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select libelle from type_reclamation where id=" + id);
+			while (rs.next()) {
+				libelle = rs.getString("libelle");
+			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 		return libelle;
-		
+
 	}
 }

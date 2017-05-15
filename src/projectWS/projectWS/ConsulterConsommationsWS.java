@@ -37,6 +37,7 @@ public class ConsulterConsommationsWS {
 				listConsommations.add(consommation);
 
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -56,6 +57,7 @@ public class ConsulterConsommationsWS {
 			while (rs.next()) {
 				libelle = rs.getString("libelle");
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 

@@ -45,11 +45,13 @@ public class ConsulterContratsWS {
 
 				listContrats.add(contrat);
 				
-			}
+				}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
+		
 		return listContrats;
 
 	}
@@ -67,6 +69,7 @@ public class ConsulterContratsWS {
 			while (rs.next()) {
 				nom = rs.getString("nom");
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 

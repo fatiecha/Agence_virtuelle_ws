@@ -12,9 +12,10 @@ import bean.Facture;
 import bean.Reclamation;
 
 public class ConsulterFacturesWS {
-	public  List<Facture> consulterFacture(String id) {
+	public List<Facture> consulterFacture(String id) {
 		List<Facture> listFacture = new ArrayList<Facture>();
-		try {Long id_contrat = Long.parseLong(id);
+		try {
+			Long id_contrat = Long.parseLong(id);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
@@ -33,10 +34,10 @@ public class ConsulterFacturesWS {
 				facture.setType_facture(getLibelleType_facture(rs.getLong("code_type_facture")));
 				facture.setEtat(rs.getBoolean("etat"));
 
-
 				listFacture.add(facture);
 
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -45,22 +46,23 @@ public class ConsulterFacturesWS {
 		return listFacture;
 	}
 
-	public String getLibelleType_facture(Long id){
-		String libelle=null;
+	public String getLibelleType_facture(Long id) {
+		String libelle = null;
 		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
-				"root", "");
-		Statement statement = connection.createStatement();
-		ResultSet rs = statement.executeQuery("select libelle from type_facture where id=" + id);
-		while(rs.next()){
-		libelle=rs.getString("libelle");
-		}
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
+					"root", "");
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select libelle from type_facture where id=" + id);
+			while (rs.next()) {
+				libelle = rs.getString("libelle");
+			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 		return libelle;
-		
+
 	}
 }

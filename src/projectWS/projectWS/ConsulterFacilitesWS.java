@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.mysql.jdbc.Connection;
 
 import bean.Echeance;
@@ -14,9 +13,10 @@ import bean.Facilite;
 import bean.Facture;
 
 public class ConsulterFacilitesWS {
-	public  List<Facilite> consulterFacilite(String id) {
+	public List<Facilite> consulterFacilite(String id) {
 		List<Facilite> listFacilite = new ArrayList<Facilite>();
-		try {Long id_contrat = Long.parseLong(id);
+		try {
+			Long id_contrat = Long.parseLong(id);
 
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agence1",
@@ -29,13 +29,11 @@ public class ConsulterFacilitesWS {
 				facilite.setId(rs.getLong("id"));
 				facilite.setEtat(rs.getString("etat"));
 				facilite.setMontant(rs.getDouble("montant"));
-				
-				
-
 
 				listFacilite.add(facilite);
 
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -43,8 +41,8 @@ public class ConsulterFacilitesWS {
 
 		return listFacilite;
 	}
-	
-	public  List<Echeance> consulterEcheance(String id) {
+
+	public List<Echeance> consulterEcheance(String id) {
 		List<Echeance> listEcheance = new ArrayList<Echeance>();
 		try {
 			Long id_facilite = Long.parseLong(id);
@@ -64,6 +62,7 @@ public class ConsulterFacilitesWS {
 				listEcheance.add(echeance);
 
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 
